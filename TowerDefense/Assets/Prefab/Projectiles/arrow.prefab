@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4353619639553190}
   - component: {fileID: 212134160456402980}
   - component: {fileID: 61178983443542358}
-  m_Layer: 0
+  - component: {fileID: 114837376268572764}
+  m_Layer: 8
   m_Name: arrow
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,6 +67,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.01}
   m_EdgeRadius: 0
+--- !u!114 &114837376268572764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192847566394518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a8312c72ff64df2985bd268af966f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackStrength: 50
+  projectileType: 1
 --- !u!212 &212134160456402980
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -98,9 +112,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1064603161
+  m_SortingLayer: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 571885bfe1f5c48768fb596d713c5868, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

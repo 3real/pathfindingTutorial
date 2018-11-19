@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4228670735389040}
   - component: {fileID: 212574697862231936}
+  - component: {fileID: 114330299000158486}
   m_Layer: 8
   m_Name: Knight Tower
   m_TagString: tower
@@ -40,6 +41,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114330299000158486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1459292529332598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e19acf92202f4d9abf89aea6ed350c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAttacks: 2
+  attackRadius: 4
+  projectile: {fileID: 114216723949974242, guid: 4c035d6193cfc4b6e95f75a770522a87,
+    type: 2}
 --- !u!212 &212574697862231936
 SpriteRenderer:
   m_ObjectHideFlags: 1

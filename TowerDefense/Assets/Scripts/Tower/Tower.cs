@@ -26,7 +26,7 @@ private bool isAttacking = false;
 	void Update () {
 		attackCounter -= Time.deltaTime;
 
-		if (targetEnemy == null) {
+		if (targetEnemy == null || targetEnemy.IsDead) {
 			Enemy nearestEnemy = GetNearestEnemyInRange();
 			if (nearestEnemy != null && Vector2.Distance(transform.localPosition, nearestEnemy.transform.localPosition) <= attackRadius){
 				targetEnemy = nearestEnemy;
@@ -94,7 +94,8 @@ private bool isAttacking = false;
 	private List<Enemy> GetEnemiesInRange(){
 		List<Enemy> enemiesInRange = new List<Enemy>();
 		foreach(Enemy enemy in GameManager.Instance.EnemyList){
-			if (Vector2.Distance(transform.localPosition, enemy.transform.localPosition) <= attackRadius){
+			//3reals code added, use the IsDead to discount dead enemies from the list of targets.
+			if (Vector2.Distance(transform.localPosition, enemy.transform.localPosition) <= attackRadius && enemy.IsDead == false){
 				enemiesInRange.Add(enemy);
 			}
 

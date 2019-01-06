@@ -6,6 +6,8 @@ public class TowerBTN : MonoBehaviour {
 	private GameObject towerObject;
 	[SerializeField]
 	private Sprite dragSprite;
+	[SerializeField]
+	private int towerPrice;
 
 	public GameObject TowerObject {
 			get {
@@ -20,4 +22,9 @@ public class TowerBTN : MonoBehaviour {
 
 	}
 	
+	public int TowerPrice {
+		get {
+			return towerPrice;
+		}
+	}
 }

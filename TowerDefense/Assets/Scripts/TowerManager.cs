@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class TowerManager : Singleton<TowerManager> {
 
-	private TowerBTN towerBTNPressed;
+	public TowerBTN towerBTNPressed{get; set;}
 	private SpriteRenderer spriteRenderer;
 
 	// Use this for initialization

@@ -54,6 +54,7 @@ MonoBehaviour:
   totalWaves: 10
   totalMoneyLbl: {fileID: 0}
   currentWaveLbl: {fileID: 0}
+  playBtnLbl: {fileID: 0}
   playBtn: {fileID: 0}
   totalEscapedLbl: {fileID: 0}
   spawnPoint: {fileID: 1844624794731192, guid: 98bcfc7e4531c4ccfaf49091a11da879, type: 2}

@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager> {
 	private Text totalMoneyLbl;
 	[SerializeField]
 	private Text currentWaveLbl;
+	[SerializeField]
 	private Text playBtnLbl;
 	[SerializeField]
 	private Button playBtn;
@@ -61,9 +62,16 @@ public class GameManager : Singleton<GameManager> {
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(Spawn());
+		playBtn.gameObject.SetActive(false);
+		Showmenu();
+		//spawn corutine commented out so spawn can be implemented as a button press.
+		//StartCoroutine(Spawn());
 	}
 	
+	void Update() {
+		handleEscape();
+	}
+
 	// Update is called once per frame
 	// void SpawnEnemy () {
 	// 	if(enemiesPerSpawn > 0 && enemiesOnScreen < totalEnemies){
@@ -114,7 +122,37 @@ public class GameManager : Singleton<GameManager> {
 	public void AddMoney (int amount) {
 		TotalMoney += amount;
 	}
+
 	public void SubMoney (int amount) {
 		TotalMoney -= amount;
+	}
+
+	public void Showmenu() {
+		switch (currentState) {
+			case gameStatus.gameover:
+				playBtnLbl.text = "Play Again!";
+				//TODO add gameover sound.
+				//TODO gameover banner.
+				break;
+			case gameStatus.next:
+				playBtnLbl.text = "Next Wave!";
+				break;
+			case gameStatus.play:
+				playBtnLbl.text = "Play";
+				break;
+			case gameStatus.win:
+				playBtnLbl.text = "Play";
+				//TODO add win sound
+				//TODO add win banner
+				break;
+		}
+		playBtn.gameObject.SetActive(true);
+	}
+
+	private void handleEscape() {
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			TowerManager.Instance.disbleDragSprite();
+			TowerManager.Instance.towerBTNPressed = null;
+		}
 	}
 }

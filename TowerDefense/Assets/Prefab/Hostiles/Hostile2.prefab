@@ -131,6 +131,7 @@ MonoBehaviour:
   - {fileID: 4569343347524018, guid: 0e0d8c865451544bca0f94cf44b3abf0, type: 2}
   navigationUpdate: 0.01
   healthPoints: 100
+  rewardAmt: 1
 --- !u!212 &212463509576681038
 SpriteRenderer:
   m_ObjectHideFlags: 1

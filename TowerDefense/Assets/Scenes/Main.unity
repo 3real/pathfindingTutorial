@@ -5267,7 +5267,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 216910429}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1701134765}
+        m_MethodName: playBtnPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &216910429
@@ -37662,6 +37673,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.85333335, y: 0.85333335}
   m_EdgeRadius: 0
+--- !u!114 &1701134765 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114026993891860686, guid: 8dba72406bab547f0b7abc6abc875d70,
+    type: 2}
+  m_PrefabInternal: {fileID: 1840702359}
+  m_Script: {fileID: 11500000, guid: 5577f5c8b315e4e76abe98afc9aedfbc, type: 3}
 --- !u!1 &1701425655
 GameObject:
   m_ObjectHideFlags: 0

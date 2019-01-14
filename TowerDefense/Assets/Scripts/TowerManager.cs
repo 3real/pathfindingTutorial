@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class TowerManager : Singleton<TowerManager> {
-
 	public TowerBTN towerBTNPressed{get; set;}
 	private SpriteRenderer spriteRenderer;
 	private Collider2D buildTile;
-	private List<Tower> TowerList = new List<Tower>();
+	public List<Tower> TowerList = new List<Tower>();
 	private List<Collider2D> BuildList = new List <Collider2D>();
 
 
@@ -16,6 +15,7 @@ public class TowerManager : Singleton<TowerManager> {
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		buildTile = GetComponent<Collider2D>();
+		spriteRenderer.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -46,7 +46,7 @@ public class TowerManager : Singleton<TowerManager> {
 
 	public void RenameTagBuildSites(){
 		foreach(Collider2D buildTag in BuildList) {
-			buildTag.tag = "BuildSite";
+			buildTag.tag = "buildSite";
 		}
 		BuildList.Clear();
 	}
@@ -59,7 +59,7 @@ public class TowerManager : Singleton<TowerManager> {
 	}
 	public void placeTower(RaycastHit2D hit) {
 		if(!EventSystem.current.IsPointerOverGameObject() && towerBTNPressed != null){
-			Tower newTower = Instantiate(towerBTNPressed.TowerObject);
+			Tower newTower = Instantiate(towerBTNPressed.TowerObject).GetComponent<Tower>();
 			newTower.transform.position = hit.transform.position;
 			buyTower(towerBTNPressed.TowerPrice);
 			RegisterTower(newTower);

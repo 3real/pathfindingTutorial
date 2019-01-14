@@ -41347,6 +41347,11 @@ Prefab:
       propertyPath: totalEscapedLbl
       value: 
       objectReference: {fileID: 732958214}
+    - target: {fileID: 114026993891860686, guid: 8dba72406bab547f0b7abc6abc875d70,
+        type: 2}
+      propertyPath: totalWaves
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dba72406bab547f0b7abc6abc875d70, type: 2}
   m_IsPrefabAsset: 0

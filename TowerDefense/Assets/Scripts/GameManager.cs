@@ -23,8 +23,9 @@ public class GameManager : Singleton<GameManager> {
 	private GameObject spawnPoint;
 	[SerializeField]
 	private GameObject[] enemies;
-	[SerializeField]
-	private int maxEnemiesOnScreen;
+	// maxEnemiesOnScreen is obsolette as we used a different method to iterate through waves.
+	//[SerializeField]
+	//private int maxEnemiesOnScreen;
 	[SerializeField]
 	private int totalEnemies = 3;
 	[SerializeField]
@@ -119,7 +120,7 @@ public class GameManager : Singleton<GameManager> {
 		Debug.Log ("spawn called");
 		if(enemiesPerSpawn > 0 && EnemyList.Count < totalEnemies){
 			for(int i = 0; i < enemiesPerSpawn; i++){
-				if(EnemyList.Count < maxEnemiesOnScreen){
+				if(EnemyList.Count < totalEnemies){
 					GameObject newEnemy = Instantiate(enemies[0]) as GameObject;
 					newEnemy.transform.position = spawnPoint.transform.position;
 					
@@ -209,7 +210,8 @@ public class GameManager : Singleton<GameManager> {
 				totalEnemies = 3;
 				TotalEscaped = 0;
 				TotalMoney = 10;
-				//TODO destroy everything muwahaha
+				TowerManager.Instance.DestroyAllTowers();
+				TowerManager.Instance.RenameTagBuildSites();
 				totalMoneyLbl.text = TotalMoney.ToString();
 				totalEscapedLbl.text = "Escaped " + TotalEscaped + "/" + tooManyEscapes;
 				break;

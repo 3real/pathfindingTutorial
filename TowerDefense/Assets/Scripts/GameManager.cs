@@ -47,6 +47,7 @@ public class GameManager : Singleton<GameManager> {
 	private int tooManyEscapes = 10;
 
 	private gameStatus currentState = gameStatus.play;
+	private AudioSource audioSource;
 
 	public List<Enemy> EnemyList = new List<Enemy>();
 
@@ -86,6 +87,12 @@ public class GameManager : Singleton<GameManager> {
 			totalKilled = value;
 		}
 	}
+
+	public AudioSource AudioSource {
+		get {
+			return audioSource;
+		}
+	}
 	const float spawnDelay = 0.5f;
 
 
@@ -94,6 +101,7 @@ public class GameManager : Singleton<GameManager> {
 	void Start () {
 		playBtn.gameObject.SetActive(false);
 		showmenu();
+		audioSource = GetComponent<AudioSource>();
 		//spawn corutine commented out so spawn can be implemented as a button press.
 		//StartCoroutine(Spawn());
 	}
@@ -214,6 +222,7 @@ public class GameManager : Singleton<GameManager> {
 				TowerManager.Instance.RenameTagBuildSites();
 				totalMoneyLbl.text = TotalMoney.ToString();
 				totalEscapedLbl.text = "Escaped " + TotalEscaped + "/" + tooManyEscapes;
+				audioSource.PlayOneShot(SoundManager.Instance.NewGame);
 				break;
 
 		}

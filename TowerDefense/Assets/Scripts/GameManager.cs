@@ -22,7 +22,7 @@ public class GameManager : Singleton<GameManager> {
 	[SerializeField]
 	private GameObject spawnPoint;
 	[SerializeField]
-	private GameObject[] enemies;
+	private Enemy[] enemies;
 	// maxEnemiesOnScreen is obsolette as we used a different method to iterate through waves.
 	//[SerializeField]
 	//private int maxEnemiesOnScreen;
@@ -43,6 +43,7 @@ public class GameManager : Singleton<GameManager> {
 	private int totalKilled = 0;
 
 	private int whichEnemiesToSpawn = 0;
+	private int enemiesToSpawn = 0;
 
 	private int tooManyEscapes = 10;
 
@@ -129,7 +130,7 @@ public class GameManager : Singleton<GameManager> {
 		if(enemiesPerSpawn > 0 && EnemyList.Count < totalEnemies){
 			for(int i = 0; i < enemiesPerSpawn; i++){
 				if(EnemyList.Count < totalEnemies){
-					GameObject newEnemy = Instantiate(enemies[0]) as GameObject;
+					Enemy newEnemy = Instantiate(enemies[Random.Range(0,enemiesToSpawn)]) as Enemy;
 					newEnemy.transform.position = spawnPoint.transform.position;
 					
 				}
@@ -169,7 +170,9 @@ public class GameManager : Singleton<GameManager> {
 	public void isWaveOver() {
 		totalEscapedLbl.text = "Escaped " + TotalEscaped + "/" + tooManyEscapes;
 		if ((RoundEscaped + TotalKilled) == totalEnemies) {
-			//space for when we actually have a method
+			if (waveNumber <= enemies.Length) {
+				enemiesToSpawn = waveNumber;
+			}
 			setCurrentGameSate();
 			showmenu();
 		}
@@ -190,7 +193,7 @@ public class GameManager : Singleton<GameManager> {
 		switch (currentState) {
 			case gameStatus.gameover:
 				playBtnLbl.text = "Play Again!";
-				//TODO add gameover sound.
+				AudioSource.PlayOneShot(SoundManager.Instance.GameOver);
 				//TODO gameover banner.
 				break;
 			case gameStatus.next:
@@ -218,6 +221,8 @@ public class GameManager : Singleton<GameManager> {
 				totalEnemies = 3;
 				TotalEscaped = 0;
 				TotalMoney = 10;
+				enemiesToSpawn = 0;
+				waveNumber = 0;
 				TowerManager.Instance.DestroyAllTowers();
 				TowerManager.Instance.RenameTagBuildSites();
 				totalMoneyLbl.text = TotalMoney.ToString();
